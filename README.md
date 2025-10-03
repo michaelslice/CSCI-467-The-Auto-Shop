@@ -41,4 +41,4 @@ python3 app.py
 ---
 
 ### View!
-The frontend is available on `localhost:4173` & and the backend is on `localhost:8000`
+The frontend is available on `localhost:5173` & and the backend is on `localhost:8000`
