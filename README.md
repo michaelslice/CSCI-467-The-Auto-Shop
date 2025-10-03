@@ -1,7 +1,7 @@
 # CSCI-467-The-Auto-Shop
 
 ## Requirements
-- Ensure you have `Node.js`
+- Ensure you have `node.js` installed
 
 # How to Setup
 ### Clone Repo 
@@ -32,7 +32,13 @@ python -m venv venv
 ./venv/Scripts/activate
 pip install -r requirements.txt
 ```
+### Startup Backend
+Run the following command in the directory `/CSCI-467-The-Auto-Shop/backend`
+```sh
+python3 app.py
+```
+
 ---
 
-### Note!
-After following the above instructions, the frontend is viewable on `localhost:4173` & and the backend is on `localhost:8000`
+### View!
+The frontend is available on `localhost:4173` & and the backend is on `localhost:8000`
