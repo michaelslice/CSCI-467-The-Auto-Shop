@@ -31,8 +31,9 @@ export default function Signin() {
         return;
       }
 
-      localStorage.setItem("user", data["user"]);
-
+      localStorage.setItem("user_data", JSON.stringify(data));
+      localStorage.setItem("username", data.user.user); 
+      
       navigate("/landing");
       window.location.reload();
     } 

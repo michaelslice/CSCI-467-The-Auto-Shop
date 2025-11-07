@@ -7,9 +7,9 @@ import Signin from '../pages/Signin/Signin';
 import Signout from '../pages/Signout/Signout';
 import ShoppingCart from '../pages/ShoppingCart/ShoppingCart';
 import Orders from '../pages/Orders/Orders';
+import Backdoor from '../pages/Backdoor/Backdoor';
 
 function App() {
-
   return (
     <>
     <Navbar />      
@@ -22,6 +22,7 @@ function App() {
         
         <Route path="/shopping-cart" element={<ShoppingCart />} />            
         <Route path="/orders" element={<Orders />} />       
+        <Route path="backdoor" element={<Backdoor />}></Route>
       </Route>
     </Routes>
     </>
