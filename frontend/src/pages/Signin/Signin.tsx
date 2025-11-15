@@ -39,7 +39,7 @@ export default function Signin() {
       console.log("signin response:", response.status, data);
 
       if (!response.ok) {
-        // ❗ Backend responded but not OK (404, 400, etc.)
+        // Backend responded but not OK (404, 400, etc.)
         console.warn(
           "Backend returned error status, using mock customer login for frontend work."
         );
@@ -48,7 +48,7 @@ export default function Signin() {
         return;
       }
 
-      // ✅ Real success path (when backend is correct)
+      //  Real success path (when backend is correct)
       if (data) {
         localStorage.setItem("user_data", JSON.stringify(data));
         localStorage.setItem("username", data.user?.name ?? username);
@@ -63,7 +63,7 @@ export default function Signin() {
         finishLogin("customer");
       }
     } catch (err) {
-      // ❗ Network/connection error – also fall back to mock login
+      //  Network/connection error – also fall back to mock login
       console.warn("Backend not reachable, doing mock login as customer.", err);
       finishLogin("customer");
     }
@@ -150,6 +150,27 @@ export default function Signin() {
           >
             Sign In
           </button>
+          {/* 👇 new part: signup option */}
+          <p
+            style={{
+              marginTop: "0.75rem",
+              textAlign: "center",
+              color: "#060601ff",
+              textShadow: "0 0 4px #f2f3ecff",
+            }}
+          >
+            Don&apos;t have an account?{" "}
+            <span
+              onClick={() => navigate("/signup")}
+              style={{
+                cursor: "pointer",
+                fontWeight: 700,
+                textDecoration: "underline",
+              }}
+            >
+              Sign up
+            </span>
+          </p>
         </form>
       </div>
     </div>
