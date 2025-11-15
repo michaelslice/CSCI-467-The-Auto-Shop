@@ -98,7 +98,7 @@ export default function ShoppingCart() {
                   columnGap: "1rem",
                 }}
               >
-                {/* 1️⃣ Name + price each */}
+                {/* 1Name + price each */}
                 <div>
                   <div style={{ fontWeight: 600 }}>{item.name}</div>
                   <div style={{ fontSize: "0.9rem", color: "#555" }}>
@@ -106,7 +106,7 @@ export default function ShoppingCart() {
                   </div>
                 </div>
 
-                {/* 2️⃣ Quantity controls – this column will line up */}
+                {/* 2 Quantity controls – this column will line up */}
                 <div
                   style={{
                     display: "flex",
@@ -130,7 +130,7 @@ export default function ShoppingCart() {
                   </button>
                 </div>
 
-                {/* 3️⃣ Line total */}
+                {/* 3 Line total */}
                 <div
                   style={{
                     display: "flex",
@@ -147,7 +147,7 @@ export default function ShoppingCart() {
                   </div>
                 </div>
 
-                {/* 4️⃣ Remove button */}
+                {/* 4️ Remove button */}
                 <div style={{ textAlign: "right" }}>
                   <button
                     type="button"
