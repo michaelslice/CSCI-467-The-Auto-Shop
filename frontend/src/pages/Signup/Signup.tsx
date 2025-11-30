@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // ✅ import this
 import type { ChangeEvent, FormEvent } from "react";
-
+import Image from "./Back.jpg";
 function Signup() {
   // (name can be SignUp or Signup)
   // Form state (aligning with typical Customer info from the use case model)
@@ -114,7 +114,7 @@ function Signup() {
         setSuccess("Account created successfully!");
         // redirect to sign in (your route is /signin)
         setTimeout(() => {
-          navigate("/signin"); // ✅ matches Routes.tsx
+          navigate("/signin"); // matches Routes.tsx
         }, 1000);
       }
     } catch (err) {
@@ -126,7 +126,20 @@ function Signup() {
   };
 
   return (
-    <div className="signup-container">
+    <div
+      className="signup-container"
+      style={{
+        backgroundImage: `url(${Image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "1rem",
+      }}
+    >
       <div className="signup-card">
         <h1>Create Your Account</h1>
         <p className="signup-subtitle">
@@ -263,6 +276,17 @@ function Signup() {
 
           <button
             className="signup-button"
+            style={{
+              marginTop: "0.75rem",
+              padding: "0.6rem 1.5rem",
+              borderRadius: "8px",
+              border: "none",
+              backgroundColor: "#f97316", // orange
+              color: "white",
+              fontWeight: 700,
+              fontSize: "1rem",
+              cursor: "pointer",
+            }}
             type="submit"
             disabled={isSubmitting}
           >
