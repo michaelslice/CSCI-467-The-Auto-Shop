@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type CartItem = {
   productId: string;
@@ -12,6 +13,7 @@ const CART_KEY = "cart";
 
 export default function ShoppingCart() {
   const [items, setItems] = useState<CartItem[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const raw = localStorage.getItem(CART_KEY);
@@ -183,8 +185,14 @@ export default function ShoppingCart() {
               <button type="button" onClick={clearCart}>
                 Clear Cart
               </button>
-              <button type="button" disabled>
-                Checkout (coming soon)
+
+              {/* ✅ REAL CHECKOUT BUTTON */}
+              <button
+                type="button"
+                disabled={items.length === 0} // only disable if empty
+                onClick={() => navigate("/checkout")} // go to checkout page
+              >
+                Checkout
               </button>
             </div>
           </div>

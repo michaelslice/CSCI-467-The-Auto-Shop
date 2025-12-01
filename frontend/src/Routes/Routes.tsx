@@ -9,6 +9,7 @@ import Signout from "../pages/Signout/Signout";
 import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import Orders from "../pages/Orders/Orders";
 import Backdoor from "../pages/Backdoor/Backdoor";
+import Checkout from "../pages/Checkout/checkout"; // adjust path/name if different
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
         {/* Shop */}
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/orders" element={<Orders />} />
+
+        {/*  ADD THIS  */}
+        <Route path="/checkout" element={<Checkout />} />
 
         {/* Admin / hidden page */}
         <Route path="/backdoor" element={<Backdoor />} />
