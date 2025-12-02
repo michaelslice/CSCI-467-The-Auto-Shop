@@ -437,34 +437,38 @@ export default function Landing() {
       }}
     >
       {/* Shopping cart emoji in top-right corner */}
-      <div
-        style={{
-          position: "fixed",
-          top: "55px",
-          right: "20px",
-          fontSize: "30px",
-          cursor: "pointer",
-        }}
+      <Link
+        to="/shopping-cart"
+        style={{ textDecoration: "none", color: "inherit" }}
       >
-        🛒
-        {cartCount > 0 && (
-          <span
-            style={{
-              position: "absolute",
-              top: "-8px",
-              right: "-10px",
-              backgroundColor: "red",
-              color: "white",
-              borderRadius: "50%",
-              fontSize: "12px",
-              padding: "2px 6px",
-              fontWeight: "bold",
-            }}
-          >
-            {cartCount}
-          </span>
-        )}
-      </div>
+        <div
+          style={{
+            position: "fixed",
+            top: "55px",
+            right: "20px",
+            fontSize: "30px",
+            cursor: "pointer",
+          }}
+        >
+          🛒
+          {cartCount > 0 && (
+            <span
+              style={{
+                position: "absolute",
+                top: "-8px",
+                right: "-10px",
+                backgroundColor: "red",
+                color: "white",
+                borderRadius: "50%",
+                padding: "2px 6px",
+                fontSize: "14px",
+              }}
+            >
+              {cartCount}
+            </span>
+          )}
+        </div>
+      </Link>
 
       <h1 style={{ fontStyle: "italic", textAlign: "center", margin: 0 }}>
         WELCOME TO THE AUTO SHOP!! 🛠️
@@ -472,8 +476,27 @@ export default function Landing() {
 
       {role === "default" && (
         <p style={{ marginTop: "1rem", textAlign: "center" }}>
-          You can browse products now. Please <Link to="/signin">sign in</Link>{" "}
-          or <Link to="/signup">create an account</Link> before checkout.
+          You can browse products now. Please{" "}
+          <Link
+            to="/signin"
+            style={{
+              color: "#ffdd57", //
+              fontWeight: "600",
+            }}
+          >
+            sign in
+          </Link>{" "}
+          or{" "}
+          <Link
+            to="/signup"
+            style={{
+              color: "#ffdd57", //
+              fontWeight: "600",
+            }}
+          >
+            create an account
+          </Link>{" "}
+          before checkout.
         </p>
       )}
 
@@ -652,7 +675,9 @@ export default function Landing() {
                       >
                         Add to Cart
                       </button>
-                      <Link to={`/products/${p.id}`}>View Details</Link>
+                      <Link to={`/products/${p.id}`} state={{ product: p }}>
+                        View Details
+                      </Link>
                     </div>
                   </div>
                 </article>
@@ -662,9 +687,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <div style={{ marginTop: "2rem", textAlign: "center" }}>
-        <Link to="/shopping-cart">View Shopping Cart</Link>
-      </div>
+      <div style={{ marginTop: "2rem", textAlign: "center" }}></div>
     </div>
   );
 }

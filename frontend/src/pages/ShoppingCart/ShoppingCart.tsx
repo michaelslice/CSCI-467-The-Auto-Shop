@@ -74,7 +74,15 @@ export default function ShoppingCart() {
       {items.length === 0 ? (
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
           <p>Your cart is currently empty.</p>
-          <Link to="/landing">Browse products</Link>
+          <Link
+            to="/landing"
+            style={{
+              color: "#ffdd57", //
+              fontWeight: "600",
+            }}
+          >
+            Browse products{" "}
+          </Link>
         </div>
       ) : (
         <>

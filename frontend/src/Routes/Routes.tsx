@@ -10,6 +10,7 @@ import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import Orders from "../pages/Orders/Orders";
 import Backdoor from "../pages/Backdoor/Backdoor";
 import Checkout from "../pages/Checkout/checkout"; // adjust path/name if different
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
 
         {/*  ADD THIS  */}
         <Route path="/checkout" element={<Checkout />} />
+
+        <Route path="/products/:productId" element={<ProductDetails />} />
 
         {/* Admin / hidden page */}
         <Route path="/backdoor" element={<Backdoor />} />
