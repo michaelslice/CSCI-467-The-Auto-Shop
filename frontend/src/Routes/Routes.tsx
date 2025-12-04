@@ -29,7 +29,7 @@ function App() {
 
         {/* Shop */}
         <Route path="/shopping-cart" element={<ShoppingCart />} />
-        <Route path="/orders" element={<Orders />} />
+        <Route path="/orders" element={<OrderConfirmation />} />
 
         {/*  ADD THIS  */}
         <Route path="/checkout" element={<Checkout />} />

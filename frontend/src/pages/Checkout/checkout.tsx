@@ -144,11 +144,27 @@ const Checkout = () => {
       return;
     }
 
+    // Build an order object for the confirmation page
+    const orderForConfirmation = {
+      order_id: Date.now(), // simple unique ID for now
+      total: Number(total.toFixed(2)),
+      customer_name: form.name,
+      items: cartItems.map((item) => ({
+        part_number: item.productId, // e.g. "P001"
+        description: item.name,
+        quantity: item.quantity,
+        price: Number((item.price * item.quantity).toFixed(2)),
+      })),
+    };
+
+    // Save in localStorage so the Orders page can also read it
+    localStorage.setItem("orderData", JSON.stringify(orderForConfirmation));
+
     // TODO: send form + cartItems to backend
     alert("Order placed successfully! 🎉");
 
     localStorage.removeItem(CART_KEY);
-    navigate("/orders");
+    navigate("/orders", { state: { order: orderForConfirmation } });
   };
 
   const isFormValid =
