@@ -5,7 +5,6 @@ import Landing from "../pages/Landing/Landing";
 import Signin from "../pages/Signin/Signin";
 import Signout from "../pages/Signout/Signout";
 import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
-import Orders from "../pages/Orders/Orders";
 import Backdoor from "../pages/Backdoor/Backdoor";
 import Checkout from "../pages/Checkout/checkout"; 
 import WorkerDashboard from "../pages/Worker/WorkerDashboard";
@@ -26,6 +25,7 @@ import ShippingCharges from "../pages/Administrator/ShippingCharges";
 import AllOrders from "../pages/Administrator/AllOrders";
 import WeightBrackets from "../pages/Administrator/WeightBrackets";
 import SearchOrders from "../pages/Administrator/SearchOrders";
+import Orders from "../pages/Orders/Orders";
 
 function App() {
   return (

@@ -143,7 +143,7 @@ const Checkout = () => {
     alert("Order placed successfully! 🎉");
 
     localStorage.removeItem(CART_KEY);
-    navigate("/orders");
+    navigate("/orders", { state: { order: orderForConfirmation } });
   };
 
   const isFormValid =

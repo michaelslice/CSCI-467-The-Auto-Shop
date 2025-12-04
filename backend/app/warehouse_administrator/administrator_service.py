@@ -95,4 +95,3 @@ class Administrator:
             orders_list.append(order.to_dict())
         
         return jsonify(orders_list), 200
-
