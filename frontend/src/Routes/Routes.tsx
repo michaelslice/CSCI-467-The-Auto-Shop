@@ -7,10 +7,10 @@ import Signup from "../pages/Signup/Signup";
 import Signin from "../pages/Signin/Signin";
 import Signout from "../pages/Signout/Signout";
 import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
-import Orders from "../pages/Orders/Orders";
 import Backdoor from "../pages/Backdoor/Backdoor";
 import Checkout from "../pages/Checkout/checkout"; // adjust path/name if different
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
 
 function App() {
   return (
