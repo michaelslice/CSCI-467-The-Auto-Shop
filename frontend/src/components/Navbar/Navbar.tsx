@@ -15,16 +15,13 @@ export default function Navbar() {
     <div className="navbar">
       {user === "default" && (
         <div>
-          {/* use "/" since we have a route for it */}
           <Link to="/">Home</Link>
           <Link to="/signin">Sign in</Link>
-          <Link to="/signup">Sign up</Link>
         </div>
       )}
 
       {user === "customer" && (
         <div>
-          {/* send customer “home” to the same Landing page */}
           <Link to="/">Customer Home</Link>
           <Link to="/orders">My Orders</Link>
           <Link to="/shopping-cart">Shopping Cart</Link>
@@ -34,18 +31,24 @@ export default function Navbar() {
 
       {user === "worker" && (
         <div>
-          {/* these routes don’t exist yet – you’ll add pages & routes later */}
-          <Link to="/dashboard">Worker Dashboard</Link>
-          <Link to="/jobs">Jobs</Link>
+          <Link to="/worker/dashboard">Dashboard</Link>
+          <Link to="/worker/items-to-pack">Items to Pack</Link>
+          <Link to="/worker/packing-labels">Packing Labels</Link>
+          <Link to="/worker/invoice-shipping-label">Invoice / Shipping Label</Link>
+          <Link to="/worker/completed-orders">Completed Orders</Link>
+          <Link to="/worker/mark-shipped">Mark Shipped</Link>
+          <Link to="/worker/send-confirmation">Send Confirmation</Link>
           <Link to="/signout">Logout</Link>
         </div>
       )}
 
       {user === "admin" && (
         <div>
-          {/* map admin panel to /backdoor for now, since that route exists */}
-          <Link to="/backdoor">Admin Panel</Link>
-          <Link to="/users">Manage Users</Link> {/* add /users route later */}
+          <Link to="/administrator/dashboard">Admin Dashboard</Link>
+          <Link to="/administrator/orders">All Orders</Link>
+          <Link to="/administrator/shipping-charges">Shipping Charges</Link>
+          <Link to="/administrator/weight-brackets">Weight Brackets</Link>
+          <Link to="/administrator/search-orders">Search Orders</Link>
           <Link to="/signout">Logout</Link>
         </div>
       )}

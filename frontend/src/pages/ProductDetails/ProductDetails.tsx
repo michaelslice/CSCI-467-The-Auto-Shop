@@ -1,4 +1,3 @@
-// src/pages/ProductDetails/ProductDetails.tsx
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
@@ -56,7 +55,6 @@ export default function ProductDetails() {
     setTimeout(() => setMessage(null), 1500);
   }
 
-  // Helper functions for extra details
   function getStockStatus(qty: number): string {
     if (qty === 0) return "Out of stock";
     if (qty < 5) return "Low stock";
@@ -70,7 +68,6 @@ export default function ProductDetails() {
       ? (product.price / product.weight).toFixed(2)
       : null;
 
-  // If user refreshed the page or opened URL directly
   if (!product) {
     return (
       <div
@@ -126,7 +123,6 @@ export default function ProductDetails() {
           boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
         }}
       >
-        {/* Header row */}
         <div
           style={{
             display: "flex",
@@ -172,7 +168,6 @@ export default function ProductDetails() {
             gap: "1.5rem",
           }}
         >
-          {/* LEFT: image */}
           <div
             style={{
               backgroundColor: "#f7ebd7",
@@ -196,7 +191,6 @@ export default function ProductDetails() {
             />
           </div>
 
-          {/* RIGHT: details */}
           <div>
             <p style={{ marginTop: 0 }}>{product.description}</p>
 
@@ -238,7 +232,6 @@ export default function ProductDetails() {
             >
               Add to Cart
             </button>
-            {/* Product Specifications – now neatly under the main info */}
             <hr
               style={{
                 margin: "1.25rem 0 0.75rem",

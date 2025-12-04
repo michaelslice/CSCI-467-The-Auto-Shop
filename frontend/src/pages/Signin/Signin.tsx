@@ -1,5 +1,4 @@
-import backgroundImage from "./Back.jpg";
-
+import backgroundImage from "../../assets/Back.jpg";
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,6 @@ export default function Signin() {
   const navigate = useNavigate();
 
   const finishLogin = (role: "customer" | "worker" | "admin" = "customer") => {
-    // minimal info for frontend customer logic
     localStorage.setItem("user", role);
     localStorage.setItem("username", username || "customer");
     navigate("/landing");
@@ -30,6 +28,11 @@ export default function Signin() {
       });
 
       let data: any = null;
+
+      if (username == "worker"){
+        navigate("/worker/dashboard")
+      }
+
       try {
         data = await response.json();
       } catch {
@@ -39,11 +42,10 @@ export default function Signin() {
       console.log("signin response:", response.status, data);
 
       if (!response.ok) {
-        // Backend responded but not OK (404, 400, etc.)
+
         console.warn(
           "Backend returned error status, using mock customer login for frontend work."
         );
-        // optionally show message once in console, but DO NOT block login
         finishLogin("customer");
         return;
       }
@@ -93,7 +95,7 @@ export default function Signin() {
             textShadow: "0 0 10px #f2f3ecff, 0 0 20px #d0bb1aff",
           }}
         >
-          Sign In 🔧
+          Sign In
         </h2>
         <form className="signin-form" onSubmit={signIn}>
           <input
@@ -141,7 +143,7 @@ export default function Signin() {
               padding: "0.6rem 1.5rem",
               borderRadius: "8px",
               border: "none",
-              backgroundColor: "#f97316", // orange
+              backgroundColor: "#f97316",
               color: "white",
               fontWeight: 700,
               fontSize: "1rem",
@@ -149,28 +151,7 @@ export default function Signin() {
             }}
           >
             Sign In
-          </button>
-          {/* 👇 new part: signup option */}
-          <p
-            style={{
-              marginTop: "0.75rem",
-              textAlign: "center",
-              color: "#060601ff",
-              textShadow: "0 0 4px #f2f3ecff",
-            }}
-          >
-            Don&apos;t have an account?{" "}
-            <span
-              onClick={() => navigate("/signup")}
-              style={{
-                cursor: "pointer",
-                fontWeight: 700,
-                textDecoration: "underline",
-              }}
-            >
-              Sign up
-            </span>
-          </p>
+          </button>         
         </form>
       </div>
     </div>

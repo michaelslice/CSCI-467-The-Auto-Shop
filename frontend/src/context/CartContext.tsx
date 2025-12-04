@@ -1,12 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-// Cart item type (customize if needed)
 export interface CartItem {
   id: number;
   name: string;
   price: number;
   imageUrl: string;
-  quantity: number; // <- supports multiple quantities
+  quantity: number; 
 }
 
 interface CartContextType {
@@ -24,7 +23,6 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -57,7 +55,6 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-// Hook to use cart anywhere
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

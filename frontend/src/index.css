@@ -1,14 +1,10 @@
-
-
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(155, 91, 91, 0.87);
   background-color: #1f0b0b;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,10 +14,6 @@
 html, body {
   height: 100%;
   margin: 0; 
-  /*display: flex;
-  justify-content: center;
-  align-items: center; 
-  flex-direction: column; */
 }
 
 a {
@@ -35,11 +27,8 @@ a:hover {
 
 body {
   margin: 0;
- /* display: flex;*/
- /* place-items: center; */
   min-width: 350px;
   min-height: 100vh;
-  /*padding-top: 6000px;*/
 }
 
 h1 {
@@ -170,7 +159,7 @@ button:focus-visible {
     font-size: 1.5rem;
   }
 }
-/* Fix placeholder color */
+
 .signin-input::placeholder {
   color: white !important;
   opacity: 1 !important;
@@ -202,7 +191,6 @@ button:focus-visible {
 }
 
 .signup-container {
-  /*background: linear-gradient(135deg, #eb8238, #af761a);*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -211,11 +199,9 @@ button:focus-visible {
 }
 
 .signup-card {
-  /* glass card */
-  background-color: rgba(216, 130, 68, 0.453);         /* translucent dark */
+  background-color: rgba(216, 130, 68, 0.453);        
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
   border-radius: 16px;
   padding: 2rem 2.5rem;
   max-width: 600px;
@@ -223,7 +209,7 @@ button:focus-visible {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
 
   border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;                                /* white text */
+  color: #ffffff;                              
 }
 
 .signup-card h1 {
@@ -264,12 +250,10 @@ button:focus-visible {
   padding: 0.6rem 0.75rem;
   border-radius: 12px;
   border: 1px solid rgba(175, 78, 78, 0.5);
-
-  background-color: rgba(249, 248, 246, 0.396);  /* glass */
+  background-color: rgba(249, 248, 246, 0.396); 
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-
-  color: #0e0e0e;                               /* white text */
+  color: #0e0e0e;                               
   font-size: 1rem;
 }
 
@@ -285,7 +269,6 @@ button:focus-visible {
 .signup-section-title {
   margin-top: 1.5rem;
   font-size: 1.1rem;
-  
 }
 
 .signup-alert {
@@ -333,7 +316,3 @@ button:focus-visible {
   cursor: pointer;
   text-decoration: underline;
 }
-
-
-
-

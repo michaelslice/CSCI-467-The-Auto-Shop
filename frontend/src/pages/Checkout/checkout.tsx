@@ -1,5 +1,3 @@
-// src/pages/Checkout/checkout.tsx
-
 import { useState, useEffect } from "react";
 import type { FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +35,6 @@ const inputBaseStyle: React.CSSProperties = {
 const Checkout = () => {
   const navigate = useNavigate();
 
-  // ---- form state ----
   const [form, setForm] = useState<CheckoutForm>({
     name: "",
     email: "",
@@ -55,7 +52,6 @@ const Checkout = () => {
   >({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  // ---- real cart items ----
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
@@ -63,7 +59,8 @@ const Checkout = () => {
     if (raw) {
       try {
         setCartItems(JSON.parse(raw));
-      } catch {
+      } 
+      catch {
         setCartItems([]);
       }
     }
@@ -77,7 +74,6 @@ const Checkout = () => {
   const tax = subtotal * taxRate;
   const total = subtotal + tax;
 
-  // ---- validation ----
   const validateField = (name: keyof CheckoutForm, value: string): string => {
     if (!value.trim()) return "This field is required.";
 
@@ -144,7 +140,6 @@ const Checkout = () => {
       return;
     }
 
-    // TODO: send form + cartItems to backend
     alert("Order placed successfully! 🎉");
 
     localStorage.removeItem(CART_KEY);

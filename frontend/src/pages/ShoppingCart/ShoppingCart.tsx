@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-//import { Link } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
 type CartItem = {
@@ -77,7 +76,7 @@ export default function ShoppingCart() {
           <Link
             to="/landing"
             style={{
-              color: "#ffdd57", //
+              color: "#ffdd57", 
               fontWeight: "600",
             }}
           >
@@ -101,14 +100,13 @@ export default function ShoppingCart() {
                 key={item.productId}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "2fr 2fr 2fr auto", // name | qty | total | remove
+                  gridTemplateColumns: "2fr 2fr 2fr auto", 
                   alignItems: "center",
                   padding: "0.75rem 0",
                   borderBottom: "1px solid #e0d2bd",
                   columnGap: "1rem",
                 }}
               >
-                {/* 1Name + price each */}
                 <div>
                   <div style={{ fontWeight: 600 }}>{item.name}</div>
                   <div style={{ fontSize: "0.9rem", color: "#555" }}>
@@ -116,7 +114,6 @@ export default function ShoppingCart() {
                   </div>
                 </div>
 
-                {/* 2 Quantity controls – this column will line up */}
                 <div
                   style={{
                     display: "flex",
@@ -140,12 +137,11 @@ export default function ShoppingCart() {
                   </button>
                 </div>
 
-                {/* 3 Line total */}
                 <div
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    textAlign: "left", // moves column a bit left
+                    textAlign: "left",
                     gap: "0.25rem",
                   }}
                 >
@@ -157,7 +153,6 @@ export default function ShoppingCart() {
                   </div>
                 </div>
 
-                {/* 4️ Remove button */}
                 <div style={{ textAlign: "right" }}>
                   <button
                     type="button"
@@ -194,11 +189,10 @@ export default function ShoppingCart() {
                 Clear Cart
               </button>
 
-              {/* ✅ REAL CHECKOUT BUTTON */}
               <button
                 type="button"
-                disabled={items.length === 0} // only disable if empty
-                onClick={() => navigate("/checkout")} // go to checkout page
+                disabled={items.length === 0} 
+                onClick={() => navigate("/checkout")}
               >
                 Checkout
               </button>
@@ -209,7 +203,7 @@ export default function ShoppingCart() {
             <Link
               to="/landing"
               style={{
-                color: "#ffdd57", //
+                color: "#ffdd57", 
                 fontWeight: "600",
               }}
             >

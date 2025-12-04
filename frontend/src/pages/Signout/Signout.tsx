@@ -1,27 +1,33 @@
 import { useNavigate } from "react-router-dom";
-import backgroundImage from "./Back.jpg";
+import backgroundImage from "../../assets/Back.jpg";
+
 export default function Signout() {
   const navigate = useNavigate();
 
   const signOut = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    // why ???????????
     try {
-      // Try to tell the backend we’re signing out (optional)
+
       await fetch("http://127.0.0.1:8000/signout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       }).catch(() => {
+        // reinventing the if statement????
         // ignore network / backend errors for frontend logout
       });
-    } finally {
-      // ALWAYS run this, even if fetch failed
+    } 
+    finally {
+
       localStorage.removeItem("user");
       localStorage.removeItem("username");
       localStorage.removeItem("cart");
 
       // Go to Sign In page (no extra reload needed)
-      navigate("/signin", { replace: true });
+      navigate("/", { replace: true });
+      window.location.reload();
+      
     }
   };
 
@@ -47,7 +53,7 @@ export default function Signout() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "0.3rem", // <-- controls spacing between all elements
+          gap: "0.3rem", 
         }}
       >
         <h2
@@ -61,19 +67,6 @@ export default function Signout() {
         >
           Signing Out.....
         </h2>
-        <p
-          style={{
-            marginTop: "0.1rem",
-            color: "black",
-            fontSize: "1.3rem",
-            textAlign: "center",
-            marginBottom: "0.1rem",
-            fontWeight: "600",
-            textShadow: "0 4px 10px rgba(0,0,0,0.7)",
-          }}
-        >
-          Thanks for stopping by the shop!! drive safe! 👋
-        </p>
         <form className="signin-form" onSubmit={signOut}>
           <button
             type="submit"
@@ -82,7 +75,7 @@ export default function Signout() {
               padding: "0.6rem 1.5rem",
               borderRadius: "8px",
               border: "none",
-              backgroundColor: "#f97316", // orange
+              backgroundColor: "#f97316",
               color: "white",
               fontWeight: 700,
               fontSize: "1rem",
@@ -96,52 +89,3 @@ export default function Signout() {
     </div>
   );
 }
-
-/*
-import { useNavigate } from "react-router-dom";
-
-export default function Signout() {
-  const navigate = useNavigate();
-
-  const signOut = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch("http://127.0.0.1:8000/signout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
-
-      const data = await response.json();
-      console.log(data);
-      localStorage.setItem("user", data["user"]);
-
-      localStorage.removeItem("user");
-      localStorage.removeItem("username");
-      localStorage.removeItem("cart");
-
-      navigate("/signin");
-      window.location.href = "/signin";
-
-      // 4. Refresh to ensure Navbar updates
-      window.location.reload();
-
-      if (!response.ok) {
-        console.log("Error!");
-        return;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return (
-    <div className="signin-container">
-      <h2>Sign Out</h2>
-      <form className="signin-form" onSubmit={signOut}>
-        <button type="submit">Sign Out</button>
-      </form>
-    </div>
-  );
-}
-  */
