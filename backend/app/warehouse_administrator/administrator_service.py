@@ -48,6 +48,7 @@ class Administrator:
         
         # This would typically be stored in a configuration table
         # For now, we'll just return success
+        # lol???
         return jsonify({
             "message": "Weight brackets updated",
             "brackets": brackets

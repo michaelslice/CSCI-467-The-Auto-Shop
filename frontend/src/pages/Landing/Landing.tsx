@@ -105,6 +105,24 @@ export default function Landing() {
     setTimeout(() => setMessage(null), 1500);
   }
 
+  if (role === "default" || !username) {
+    return (
+      <div
+        style={{
+          paddingTop: "6rem",
+          textAlign: "center",
+          minHeight: "100vh",
+          backgroundColor: "#cb842eff",
+        }}
+      >
+        <h2>You must be logged in to view products.</h2>
+        <Link to="/signin" style={{ fontSize: "1.2rem" }}>
+          Go to Login
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
@@ -291,9 +309,9 @@ export default function Landing() {
                       >
                         Add to Cart
                       </button>
-                      <Link to={`/products/${p.number}`} state={{ product: p }}>
+                      {/* <Link to={`/products/${p.number}`} state={{ product: p }}>
                         View Details
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
                 </article>

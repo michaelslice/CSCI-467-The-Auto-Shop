@@ -34,7 +34,7 @@ export default function OrderConfirmation() {
   return (
     <div
       style={{
-        backgroundColor: "#cb842eff", // SAME AS CHECKOUT
+        backgroundColor: "#cb842eff",
         paddingTop: "5rem",
         paddingInline: "2rem",
         minHeight: "100vh",
@@ -45,7 +45,7 @@ export default function OrderConfirmation() {
         style={{
           maxWidth: "900px",
           margin: "0 auto",
-          backgroundColor: "#fff7e8", // SAME CREAM CARD
+          backgroundColor: "#fff7e8",
           padding: "1.5rem 2rem 2rem",
           borderRadius: "10px",
           boxShadow: "0 2px 6px rgba(0,0,0,0.15)",

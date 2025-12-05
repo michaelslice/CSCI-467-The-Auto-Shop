@@ -130,7 +130,7 @@ const Checkout = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setHasSubmitted(true);
 
@@ -140,10 +140,56 @@ const Checkout = () => {
       return;
     }
 
-    alert("Order placed successfully! 🎉");
+    const stored = localStorage.getItem("user_data");
+    const parsed = stored ? JSON.parse(stored) : null;
 
-    localStorage.removeItem(CART_KEY);
-    navigate("/orders", { state: { order: orderForConfirmation } });
+    const userId = parsed?.user?.id;
+
+    if (!userId) {
+      alert("You must be logged in to checkout.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:8000/checkout_order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          cart: cartItems,       
+          subtotal,
+          tax,
+          total,
+          shipping: {
+            name: form.name,
+            email: form.email,
+            address: form.address,
+            city: form.city,
+            state: form.state,
+            zip: form.zip
+          }
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.error || "Checkout failed.");
+        return;
+      }
+
+      alert("Order placed successfully!");
+
+      localStorage.removeItem(CART_KEY);
+      localStorage.setItem("last_order", JSON.stringify(data));
+
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert("Checkout failed. Server not responding.");
+    }
   };
 
   const isFormValid =

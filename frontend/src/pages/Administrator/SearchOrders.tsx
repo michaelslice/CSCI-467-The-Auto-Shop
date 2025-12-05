@@ -79,7 +79,7 @@ export default function SearchOrders() {
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ marginBottom: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h1>Search Orders 🔍</h1>
+          <h1>Search Orders</h1>
           <Link to="/administrator/dashboard" style={{ padding: "0.5rem 1rem", backgroundColor: "#fff7e8", borderRadius: "5px", textDecoration: "none", color: "#333" }}>
             ← Back to Dashboard
           </Link>

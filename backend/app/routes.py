@@ -129,3 +129,19 @@ def set_weight_brackets_route():
 @main.route("/administrator/search_orders", methods=["GET"])
 def search_orders_route():
     return Administrator().search_orders()
+
+@main.route("/administrator/orders/<int:order_id>/status", methods=["PUT"])
+def update_order_status(order_id):
+    data = request.get_json()
+    new_status = data.get("status")
+    if not new_status:
+        return jsonify({"error": "Missing status"}), 400
+
+    order = Order.query.get(order_id)
+    if not order:
+        return jsonify({"error": "Order not found"}), 404
+
+    order.status = new_status
+    db.session.commit()
+
+    return jsonify({"order_id": order.id, "status": order.status})

@@ -27,6 +27,9 @@ class Auth:
             
         elif name == "admin":
             account_type = "admin"
+            
+        elif name == "receiver":
+            account_type = "receiver"            
 
         user_data = {
             "id": user.id,
@@ -36,6 +39,9 @@ class Auth:
             "contact": user.contact,
             "user": account_type
         }
+
+        # For server side, debugging!
+        print(user_data)
 
         return jsonify({"user": user_data}), 200
     

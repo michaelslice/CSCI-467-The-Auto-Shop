@@ -26,9 +26,11 @@ export default function InventoryLevels() {
       }
       const data = await response.json();
       setInventory(data.inventory || []);
-    } catch (err) {
+    } 
+    catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
-    } finally {
+    } 
+    finally {
       setLoading(false);
     }
   };
@@ -62,7 +64,7 @@ export default function InventoryLevels() {
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ marginBottom: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h1>Inventory Stock Levels 📊</h1>
+          <h1>Inventory Stock Levels</h1>
           <div style={{ display: "flex", gap: "1rem" }}>
             <button onClick={fetchInventory} style={{ padding: "0.5rem 1rem", backgroundColor: "#fff7e8", borderRadius: "5px", border: "none", cursor: "pointer" }}>
               Refresh

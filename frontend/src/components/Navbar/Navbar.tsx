@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-type UserRole = "default" | "customer" | "worker" | "admin";
+type UserRole = "default" | "customer" | "worker" | "admin" | "receiver";
 
 export default function Navbar() {
   const [user, setUser] = useState<UserRole>("default");
@@ -38,6 +38,18 @@ export default function Navbar() {
           <Link to="/worker/completed-orders">Completed Orders</Link>
           <Link to="/worker/mark-shipped">Mark Shipped</Link>
           <Link to="/worker/send-confirmation">Send Confirmation</Link>
+          <Link to="/signout">Logout</Link>
+        </div>
+      )}
+
+      {user === "receiver" && (
+        <div>
+          <Link to="/receiver/dashboard">Receiver Dashboard</Link>
+          <Link to="/receiver/receive-products">Receive Products</Link>
+          <Link to="/receiver/products">Products</Link>
+          <Link to="/receiver/identify-product">Identify Product</Link>
+          <Link to="/receiver/update-quantity">Update Quantity</Link>
+          <Link to="/receiver/inventory">Inventory Levels</Link>
           <Link to="/signout">Logout</Link>
         </div>
       )}

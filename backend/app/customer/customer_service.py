@@ -53,53 +53,61 @@ class Customer:
     
     def checkout_order(self):
         data = request.get_json()
+
         user_id = data.get("user_id")
+        cart = data.get("cart", [])
 
         if not user_id:
             return jsonify({"error": "Missing user_id"}), 400
 
-        # Fetch user and their cart
+        if not cart or len(cart) == 0:
+            return jsonify({"error": "Cart is empty"}), 400
+
+        # Validate user exists
         user = User.query.get(user_id)
         if not user:
             return jsonify({"error": f"User with id {user_id} not found"}), 404
 
-        cart_items = ShoppingCart.query.filter_by(user_id=user_id).all()
-        if not cart_items:
-            return jsonify({"error": "Shopping cart is empty"}), 400
-
         # Create new order
-        new_order = Order(user_id=user_id, order_date=datetime.utcnow(), status="Pending")
+        new_order = Order(
+            user_id=user_id,
+            order_date=datetime.utcnow(),
+            status="Pending"
+        )
         db.session.add(new_order)
-        db.session.flush() 
+        db.session.flush()  
 
         total_amount = 0
         order_items_list = []
 
-        for cart_item in cart_items:
-            part = Part.query.get(cart_item.part_number)
+        for item in cart:
+            part_number = item.get("productId")
+            quantity = item.get("quantity", 1)
+
+            part = Part.query.get(part_number)
             if not part:
-                continue  
+                continue 
 
             order_item = OrderItem(
                 order_id=new_order.id,
                 part_number=part.number,
-                quantity=cart_item.quantity,
+                quantity=quantity,
                 unit_price=part.price
             )
             db.session.add(order_item)
 
-            subtotal = part.price * cart_item.quantity
+            subtotal = part.price * quantity
             total_amount += subtotal
+
             order_items_list.append({
                 "part_number": part.number,
                 "description": part.description,
-                "quantity": cart_item.quantity,
+                "quantity": quantity,
                 "unit_price": part.price,
                 "subtotal": subtotal
             })
 
         new_order.total_amount = total_amount
-        ShoppingCart.query.filter_by(user_id=user_id).delete()
 
         db.session.commit()
 
@@ -110,7 +118,7 @@ class Customer:
             "total_amount": total_amount,
             "items": order_items_list
         }), 201
-        
+
     def shopping_cart_status(self):
 
         user_id = request.args.get("user_id", type=int)

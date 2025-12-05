@@ -28,9 +28,11 @@ export default function ReceiverProducts() {
       }
       const data = await response.json();
       setProducts(data);
-    } catch (err) {
+    } 
+    catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
-    } finally {
+    } 
+    finally {
       setLoading(false);
     }
   };
@@ -64,7 +66,7 @@ export default function ReceiverProducts() {
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ marginBottom: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h1>Browse Products 🔍</h1>
+          <h1>Browse Products</h1>
           <Link to="/receiver/dashboard" style={{ padding: "0.5rem 1rem", backgroundColor: "#fff7e8", borderRadius: "5px", textDecoration: "none", color: "#333" }}>
             ← Back to Dashboard
           </Link>

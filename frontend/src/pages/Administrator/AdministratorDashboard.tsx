@@ -12,7 +12,7 @@ export default function AdministratorDashboard() {
       }}
     >
       <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
-        Warehouse Administrator Dashboard 👔
+        Warehouse Administrator Dashboard
       </h1>
 
       <div

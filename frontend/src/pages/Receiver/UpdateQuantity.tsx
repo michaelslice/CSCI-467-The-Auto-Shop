@@ -58,7 +58,7 @@ export default function UpdateQuantity() {
     >
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <div style={{ marginBottom: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h1>Update Quantity on Hand 📊</h1>
+          <h1>Update Quantity on Hand</h1>
           <Link to="/receiver/dashboard" style={{ padding: "0.5rem 1rem", backgroundColor: "#fff7e8", borderRadius: "5px", textDecoration: "none", color: "#333" }}>
             ← Back to Dashboard
           </Link>

@@ -19,7 +19,8 @@ export default function ShoppingCart() {
     if (raw) {
       try {
         setItems(JSON.parse(raw));
-      } catch {
+      } 
+      catch {
         setItems([]);
       }
     }

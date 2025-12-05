@@ -9,10 +9,26 @@ export default function Signin() {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const finishLogin = (role: "customer" | "worker" | "admin" = "customer") => {
+  const finishLogin = (role: "customer" | "worker" | "admin" | "receiver" = "customer") => {
     localStorage.setItem("user", role);
     localStorage.setItem("username", username || "customer");
-    navigate("/landing");
+    
+    if(username == "customer"){
+      navigate("/landing");    
+    }
+
+    if(username == "worker"){
+      navigate("/worker/dashboard");    
+    }
+    
+    if(username == "admin"){
+      navigate("/administrator/dashboard");    
+    }
+
+    if(username == "receiver"){
+      navigate("/receiver/dashboard");    
+    }
+
     window.location.reload();
   };
 
@@ -29,13 +45,10 @@ export default function Signin() {
 
       let data: any = null;
 
-      if (username == "worker"){
-        navigate("/worker/dashboard")
-      }
-
       try {
         data = await response.json();
-      } catch {
+      } 
+      catch {
         // ignore JSON parse errors
       }
 
@@ -50,22 +63,21 @@ export default function Signin() {
         return;
       }
 
-      //  Real success path (when backend is correct)
       if (data) {
         localStorage.setItem("user_data", JSON.stringify(data));
         localStorage.setItem("username", data.user?.name ?? username);
 
         const role =
-          (data.user?.user as "customer" | "worker" | "admin") || "customer";
+          (data.user?.user as "customer" | "worker" | "admin" | "receiver") || "customer";
 
         localStorage.setItem("user", role);
         finishLogin(role);
-      } else {
-        // no data but status ok: still just log in as customer
+      } 
+      else {
         finishLogin("customer");
       }
-    } catch (err) {
-      //  Network/connection error – also fall back to mock login
+    } 
+    catch (err) {
       console.warn("Backend not reachable, doing mock login as customer.", err);
       finishLogin("customer");
     }
